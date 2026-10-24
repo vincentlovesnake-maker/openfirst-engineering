@@ -2,7 +2,7 @@
 
 # OpenFirst Engineering
 
-**面向 AI 编程 Agent 的开源优先、证据驱动工程决策 Skill**
+**项目审计、开源复用、根因诊断、UI/UX 收敛、项目救援与发布决策**
 
 [![Tests](https://github.com/vincentlovesnake-maker/openfirst-engineering/actions/workflows/tests.yml/badge.svg)](https://github.com/vincentlovesnake-maker/openfirst-engineering/actions/workflows/tests.yml)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
@@ -12,12 +12,31 @@
 
 </div>
 
-OpenFirst Engineering（OFE）帮助 Agent 决定：**应该开发什么、复用什么、修复
-什么、停止什么，以及什么条件下可以交付或发布**。
+OpenFirst Engineering（OFE）是面向 Codex 和 AI 编程 Agent 的工程决策与交付控制
+Skill，覆盖项目审计、开源项目改造、Build vs. Reuse、根因诊断、工程规划、受控
+实施、UI/UX 质量门禁、项目救援和发布就绪。
+
+它帮助 Agent 决定：**应该开发什么、保留什么、复用什么、集成什么、修复什么、
+停止什么，以及什么条件下可以交付或发布**。
 
 它要求先核实当前项目，再比较原生能力和成熟开源方案，明确权限、证据、风险、
 回滚和停止条件，最终选择满足验收要求的最小改动。它不会把“写了很多代码、生成
 了很多文档、发现了很多问题”当成成功。
+
+## 什么时候使用 OFE
+
+- 一个项目反复修改、候选越来越多，却始终无法正式交付；
+- 需要独立项目审计，区分当前事实、历史报告、Mock、Fixture、演示和口头声明；
+- 一个 Bug、生产故障或 UI 问题反复出现，需要复现、竞争假设和根因诊断；
+- 需要比较保留、配置、复用、集成、Fork、替换和最小自研；
+- 需要把开源 Web 项目、AI Agent 或自动化系统改造成 Windows、桌面端、移动端或行业产品；
+- UI 看起来廉价、混乱、不一致、难操作或无障碍不足，但不希望无边界重做全站；
+- AI、Agent、RAG、数据、安全、许可证、部署或商业承诺需要有证据的工程裁决；
+- 发布前需要版本身份、质量、回滚、许可证、支持和客户交付门禁；
+- 需要冻结范围、去重阻断项、停止无效工作，并找到项目最短正确闭环。
+
+适用检索词包括：**项目审计、开源选型、开源改造、软件架构决策、根因分析、
+UI/UX 审计、项目救援、发布就绪、Windows 客户端封装、AI Agent 工程化**。
 
 ## 核心能力
 
@@ -194,8 +213,9 @@ python -m unittest discover -s tests -v
 python -m compileall -q scripts
 ```
 
-CI 在 Windows、Linux 和 macOS 上使用 Python 3.10 与 3.13 验证，覆盖模式、权限、
-证据、开源决策、81 个角色、UI/UX 伴随门禁、结构化输出、只读清点和场景基线。
+CI 在 Windows、Linux 和 macOS 上使用 Python 3.10 与 3.13 验证，覆盖 Skill 发现
+元数据、模式、权限、证据、开源决策、81 个角色、UI/UX 伴随门禁、结构化输出、
+只读清点和场景基线。
 
 ## 明确限制
 

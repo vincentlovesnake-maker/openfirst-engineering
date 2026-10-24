@@ -2,7 +2,7 @@
 
 # OpenFirst Engineering
 
-**Evidence-led, open-source-first engineering decisions for AI coding agents.**
+**Audit projects. Reuse mature open source. Diagnose root causes. Rescue delivery. Ship with evidence.**
 
 [![Tests](https://github.com/vincentlovesnake-maker/openfirst-engineering/actions/workflows/tests.yml/badge.svg)](https://github.com/vincentlovesnake-maker/openfirst-engineering/actions/workflows/tests.yml)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
@@ -13,14 +13,35 @@
 
 </div>
 
-OpenFirst Engineering (OFE) is a reusable engineering skill for agents that
-must decide **what to build, reuse, repair, stop, or release**. It turns broad
-software requests into bounded decisions backed by current project evidence,
-open-source research, explicit permissions, objective quality gates, rollback,
-and verifiable completion conditions.
+OpenFirst Engineering (OFE) is a reusable **Codex Skill and AI coding-agent
+engineering system** for project audits, open-source transformation, build vs.
+reuse decisions, root-cause diagnosis, engineering planning, controlled
+implementation, UI/UX quality gates, project rescue, and release readiness.
+
+It helps an agent decide **what to build, keep, reuse, integrate, repair, stop,
+or release**. Broad software requests become bounded decisions backed by current
+project evidence, mature open-source research, explicit permissions, objective
+quality gates, rollback, and verifiable completion conditions.
 
 OFE optimizes for delivery with controlled risk, not activity, document volume,
 or code generation volume.
+
+## Use OFE when
+
+- an existing project has been modified repeatedly but still cannot ship;
+- you need an independent project audit that separates current facts from stale reports, mocks, demos, and claims;
+- a persistent bug or production failure needs reproducible root-cause diagnosis rather than another rewrite;
+- you must decide between keeping, configuring, integrating, forking, replacing, or minimally building a capability;
+- an open-source Web or AI Agent project must be transformed into a Windows, desktop, mobile, or product-specific application;
+- a UI looks cheap, inconsistent, inaccessible, or difficult to use and needs evidence-led quality convergence without uncontrolled redesign;
+- AI, Agent, RAG, automation, data, security, licensing, deployment, or commercial promises need bounded engineering decisions;
+- a release candidate needs identity, quality, rollback, license, support, and customer-delivery gates;
+- a long-running project needs scope freeze, blocker deduplication, a stop-work list, and the shortest honest path to delivery.
+
+OFE is designed for requests such as **project audit**, **open-source selection**,
+**open-source transformation**, **software architecture decision**, **root-cause
+analysis**, **UI/UX audit**, **project rescue**, **release readiness**, **Windows
+desktop wrapper**, and **AI Agent engineering**.
 
 ## Why OFE exists
 
@@ -310,9 +331,9 @@ python -m compileall -q scripts
 ```
 
 CI runs on Windows, Linux, and macOS using Python 3.10 and 3.13. Tests cover
-evidence rules, mode and permission boundaries, open-source decisions, all 81
-role contracts, the UI/UX companion gate, read-only inventory behavior, output
-validation, broken-project ground truth, and reference integrity.
+discovery metadata, evidence rules, mode and permission boundaries, open-source
+decisions, all 81 role contracts, the UI/UX companion gate, read-only inventory
+behavior, output validation, broken-project ground truth, and reference integrity.
 
 ## What OFE does not claim
 

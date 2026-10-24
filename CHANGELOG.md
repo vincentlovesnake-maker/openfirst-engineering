@@ -4,6 +4,14 @@ All notable changes to OpenFirst Engineering are documented in this file.
 
 The project follows semantic versioning for tagged public releases.
 
+## 1.1.1 - 2026-10-25
+
+### Changed
+
+- Rewrote Skill discovery metadata to expose project audit, open-source transformation, root-cause diagnosis, UI/UX quality, project rescue, and release-readiness capabilities without turning the Skill into a generic catch-all.
+- Reworked the English and Chinese README opening sections around concrete high-intent use cases and natural search language for people, GitHub search, and AI retrieval.
+- Strengthened agent-facing metadata and default invocation context so automatic discovery can match the Skill to the decisions it actually supports.
+
 ## 1.1.0 - 2026-10-25
 
 ### Added

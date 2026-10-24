@@ -1,13 +1,15 @@
 ---
 name: openfirst-engineering
-description: Evidence-led, open-source-first software engineering decisions for project inception, transformation, planning, scoped implementation, audits, root-cause diagnosis, UI/UX quality, rescue and closure, and release readiness. Use when deciding what to build, reuse, repair, stop, or release; do not use for a narrow code edit whose solution and authorization are already explicit.
+description: "Use for evidence-led software decisions across AI/Agent, Web, desktop, and UI/UX projects: project audits, hidden-capability discovery, open-source transformation and selection before custom development, root-cause diagnosis, bounded engineering plans, project rescue, and release readiness. Decide what to build, keep, integrate, repair, stop, or ship. Do not use for a narrow edit with a known solution and explicit authorization."
 metadata:
-  short-description: Open-source-first engineering decisions
+  short-description: OSS-first audits, root cause, UI/UX, rescue, and release decisions
 ---
 
 # OpenFirst Engineering (OFE)
 
-Use OFE to decide what software work is necessary, what can be reused, and what evidence is required to stop. Optimize for delivery with controlled risk, not activity or code volume.
+OFE is an engineering decision and delivery-control system for AI coding agents. It inspects real project state, finds native and hidden capability, applies open-source-first selection, diagnoses recurring failures, constrains UI/UX and implementation scope, rescues projects from repeated churn, and defines evidence strong enough to stop or release. Optimize for delivery with controlled risk, not activity or code volume.
+
+Use it for project audits, open-source transformation, build-versus-reuse decisions, root-cause diagnosis, engineering plans, controlled implementation, UI/UX quality convergence, project rescue, and release readiness. It is not a generic code-generation style guide.
 
 ## Non-negotiable rules
 
