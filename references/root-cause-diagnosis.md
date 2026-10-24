@@ -11,7 +11,8 @@ Find the smallest evidence-supported cause and repair boundary for a persistent 
 5. Distinguish product defect, configuration, deployment, environment, data, test defect, dependency behavior, and requirement conflict.
 6. Form competing hypotheses and attempt to falsify them.
 7. Check native or upstream fixes and mature alternatives before custom repair.
-8. Define minimal containment, fix, regression test, and rollback.
+8. For an interface failure, activate [ui-ux-quality.md](ui-ux-quality.md), distinguish visual symptom from cascade, component, state, data, responsive, accessibility, or performance cause, and preserve rendered reproduction evidence.
+9. Define minimal containment, fix, regression test, and rollback.
 
 ## Rules
 Do not use a broad rewrite as diagnosis. Do not repeatedly retry flaky or paid operations to manufacture success. A symptom, log line, or correlation is not root cause until competing explanations are addressed.

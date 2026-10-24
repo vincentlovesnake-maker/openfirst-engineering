@@ -1,6 +1,6 @@
 ---
 name: openfirst-engineering
-description: Evidence-led, open-source-first software engineering decisions for project inception, transformation, planning, scoped implementation, audits, root-cause diagnosis, rescue and closure, and release readiness. Use when deciding what to build, reuse, repair, stop, or release; do not use for a narrow code edit whose solution and authorization are already explicit.
+description: Evidence-led, open-source-first software engineering decisions for project inception, transformation, planning, scoped implementation, audits, root-cause diagnosis, UI/UX quality, rescue and closure, and release readiness. Use when deciding what to build, reuse, repair, stop, or release; do not use for a narrow code edit whose solution and authorization are already explicit.
 metadata:
   short-description: Open-source-first engineering decisions
 ---
@@ -19,6 +19,7 @@ Use OFE to decide what software work is necessary, what can be reused, and what 
 6. Prefer the smallest change that satisfies fixed acceptance conditions. Do not turn rescue, audit, or release work into an unbounded redesign.
 7. A developer or implementing agent cannot be the sole independent approver of its own major change. Record actual review independence; never claim multiple models or agents that were not used.
 8. Stop when the predefined completion condition is met or when a named blocker requires user or external action. Do not keep expanding scope to improve an arbitrary score.
+9. Functional correctness does not prove visual or interaction quality, and a screenshot does not prove workflow completion or accessibility. User-facing work must activate the UI/UX quality gate.
 
 ## Start every task
 
@@ -26,10 +27,11 @@ Use OFE to decide what software work is necessary, what can be reused, and what 
 2. Identify the requested outcome, actual project root, baseline, environment, and permission class.
 3. Select one primary mode using [mode-router.md](references/mode-router.md). Add a secondary mode only when it changes required evidence or deliverables.
 4. Load only the references linked for that mode. Use [role-catalog.md](references/role-catalog.md) to select the smallest useful set of professional views.
-5. Freeze success criteria and release or quality gates before scoring or implementation.
-6. Inspect existing capability. Trigger the open-source-first gate when required.
-7. Compare options, include a credible keep or native-reuse option, and use an independent counter-review for major decisions.
-8. Act only within the authorized permission. Return verifiable results, limitations, completion state, and the next decision.
+5. Activate [ui-ux-quality.md](references/ui-ux-quality.md) when the task evaluates, creates, changes, rescues, or releases a user-facing interface.
+6. Freeze success criteria and release or quality gates before scoring or implementation.
+7. Inspect existing capability. Trigger the open-source-first gate when required.
+8. Compare options, include a credible keep or native-reuse option, and use an independent counter-review for major decisions.
+9. Act only within the authorized permission. Return verifiable results, limitations, completion state, and the next decision.
 
 ## Mode routing
 
@@ -45,6 +47,12 @@ Use OFE to decide what software work is necessary, what can be reused, and what 
 | MODE-08 RELEASE_READINESS | Decide release or customer delivery readiness | [release-readiness.md](references/release-readiness.md) |
 
 Use model judgment from target, permissions, and project state. Do not use keyword matching alone as a mode decision.
+
+## UI/UX quality gate
+
+The UI/UX gate is a cross-cutting companion, not a ninth operating mode. Keep the lifecycle decision in MODE-01 through MODE-08, then activate the gate for visual design, interaction, responsive behavior, desktop or mobile surfaces, accessibility, localization layout, frontend performance, or user-facing state and recovery work.
+
+The gate requires a frozen interface baseline, actual rendered evidence when available, representative user journeys, state and viewport coverage, explicit functional/visual/interaction/accessibility results, and pilot acceptance before broad propagation. Do not approve interface quality from source inspection, HTTP success, detector output, or a single screenshot alone.
 
 ## Permission classes
 
@@ -74,6 +82,8 @@ Emergency containment may precede full research only when delay would materially
 
 Read [evidence-policy.md](references/evidence-policy.md) for statuses, E0-E5 levels, finding records, conflict handling, and current-version rules. Read [quality-gates.md](references/quality-gates.md) before defining pass or fail, release, or completion conditions.
 
+For user-facing work, also read [ui-ux-quality.md](references/ui-ux-quality.md) and use [ui-ux-audit-template.md](assets/ui-ux-audit-template.md) when a dedicated interface assessment is needed.
+
 Required status vocabulary: CONFIRMED, RISK, UNVERIFIED, PASSED, NOT_IMPLEMENTED, OUT_OF_SCOPE, RESOLVED, DISPUTED.
 
 Important conclusions include project version, object, method, evidence location, confidence, verified fact, inference, unknowns, recommendation, and retest condition. Use scripts/evidence_check.py and scripts/validate_outputs.py for structured JSON deliverables.
@@ -95,6 +105,7 @@ Return the shortest deliverable that supports the decision, but include:
 - facts, inferences, unknowns, and recommendations;
 - existing or native capability findings;
 - open-source gate result when triggered;
+- UI/UX gate result, rendered evidence, pilot boundary, and separate functional, visual, interaction, and accessibility results when user-facing work is in scope;
 - options and explicit decision;
 - tasks with owner role, boundary, dependencies, acceptance, rollback, and definition of done;
 - independent review result for major decisions;

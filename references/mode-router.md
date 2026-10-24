@@ -6,14 +6,20 @@ Choose one primary mode from the requested decision, not from incidental words. 
 
 | User intent | Primary mode | Typical permission | Mandatory companion |
 |---|---|---|---|
-| Decide whether a product should exist | MODE-01 | PLAN_ONLY | Open-source gate |
-| Preserve and adapt an upstream project | MODE-02 | READ_ONLY or PLAN_ONLY | Open-source gate and license review |
-| Turn approved requirements into architecture and tasks | MODE-03 | PLAN_ONLY | Open-source gate for new choices |
-| Make approved code or configuration changes | MODE-04 | IMPLEMENT_SCOPED | Baseline, tests, risk-based review |
-| Establish current project condition | MODE-05 | READ_ONLY | Evidence policy |
-| Explain a concrete recurring failure | MODE-06 | READ_ONLY then TEST_IN_SANDBOX | Reproduction hierarchy |
-| End churn and converge delivery | MODE-07 | READ_ONLY or PLAN_ONLY | Frozen exit conditions |
-| Decide whether a candidate can ship | MODE-08 | READ_ONLY or RELEASE_PREPARATION | Release gates |
+| Decide whether a product should exist | MODE-01 | PLAN_ONLY | Open-source gate; UI/UX gate when interface assumptions affect viability |
+| Preserve and adapt an upstream project | MODE-02 | READ_ONLY or PLAN_ONLY | Open-source gate, license review, and UI/UX gate for user-facing adaptation |
+| Turn approved requirements into architecture and tasks | MODE-03 | PLAN_ONLY | Open-source gate for new choices; UI/UX gate for interface scope |
+| Make approved code or configuration changes | MODE-04 | IMPLEMENT_SCOPED | Baseline, tests, risk-based review, and UI/UX gate when interface behavior changes |
+| Establish current project condition | MODE-05 | READ_ONLY | Evidence policy and UI/UX gate when auditing user-facing surfaces |
+| Explain a concrete recurring failure | MODE-06 | READ_ONLY then TEST_IN_SANDBOX | Reproduction hierarchy and UI/UX gate for interface failures |
+| End churn and converge delivery | MODE-07 | READ_ONLY or PLAN_ONLY | Frozen exit conditions and UI/UX gate when interface churn is material |
+| Decide whether a candidate can ship | MODE-08 | READ_ONLY or RELEASE_PREPARATION | Release gates and UI/UX gate for user-facing candidates |
+
+## Cross-cutting UI/UX gate
+
+Activate `UI_UX_QUALITY_GATE` without changing the primary mode when the decision concerns how a user-facing surface looks, behaves, responds, communicates state, adapts across devices, or supports keyboard and assistive use. Read [ui-ux-quality.md](ui-ux-quality.md).
+
+Do not activate it for backend-only, infrastructure-only, or non-visual data work unless the change alters a user-visible contract. The gate may be `NOT_APPLICABLE`, but that conclusion must be explicit for a release that includes a user interface.
 
 ## Tie breakers
 

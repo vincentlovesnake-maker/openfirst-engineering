@@ -46,6 +46,7 @@ OFE makes those questions part of the workflow before large changes are made.
 | Permission control | Keeps planning and audits read-only unless implementation is explicitly authorized |
 | Evidence discipline | Distinguishes facts, supported inferences, unknowns, recommendations, and disputed conclusions |
 | Quality gates | Defines observable correctness, security, reliability, delivery, license, and commercial conditions |
+| UI/UX quality gate | Requires rendered journeys, state and viewport coverage, accessibility, recovery, and separate functional, visual, interaction, and accessibility results |
 | Minimal-change planning | Prefers the smallest justified change that preserves stable behavior and upstream compatibility |
 | Release and rescue closure | Defines rollback, retest, ownership, stop conditions, and unresolved risk without manufacturing success |
 | Professional review views | Provides 81 compact responsibility contracts without pretending they are separate people or agents |
@@ -67,6 +68,24 @@ OFE makes those questions part of the workflow before large changes are made.
 The router selects a mode from the requested decision, project state, and
 authorization. Missing source reduces confidence; it does not silently change
 the task into implementation.
+
+## UI/UX quality gate
+
+UI/UX is a cross-cutting companion gate rather than a ninth lifecycle mode. A
+user-facing audit remains MODE-05, a persistent interface failure remains
+MODE-06, an approved frontend change remains MODE-04, and a release decision
+remains MODE-08.
+
+When applicable, the gate freezes the interface build, users, core journeys,
+states, viewports, devices or DPI, input methods, locales, existing design
+system, and protected business behavior. It then requires actual rendered
+evidence and records functional, visual, interaction, and accessibility results
+separately.
+
+The gate prevents common failure patterns: approving UI from source code or a
+single screenshot, replacing a framework before diagnosing the real defect,
+hiding functionality to make a page look clean, stacking global overrides, or
+propagating a redesign before a representative pilot passes.
 
 ## Open-source-first gate
 
@@ -215,6 +234,16 @@ gates before scoring. Return GO, CONDITIONAL_GO, NO_GO, or DEFER with actual
 verification evidence and rollback.
 ```
 
+### UI/UX quality audit
+
+```text
+Use $openfirst-engineering in MODE-05 with READ_ONLY permission and activate
+UI_UX_QUALITY_GATE. Freeze the interface baseline, inspect rendered core
+journeys across relevant states and viewports, separate functional, visual,
+interaction, and accessibility results, identify canonical root causes, and
+recommend a bounded pilot before propagation.
+```
+
 ## Output contract
 
 An OFE decision should include, in the shortest useful form:
@@ -224,6 +253,7 @@ An OFE decision should include, in the shortest useful form:
 - facts, inferences, unknowns, and recommendations;
 - existing or native capability findings;
 - open-source gate result when triggered;
+- UI/UX gate evidence and separate functional, visual, interaction, and accessibility results when applicable;
 - options and an explicit decision;
 - tasks with owner role, boundary, dependencies, acceptance, rollback, and done condition;
 - independent review result or disclosed self-review limitation;
@@ -253,8 +283,8 @@ pretending to judge whether a conclusion is true.
 ## Templates
 
 Reusable assets are included for open-source comparisons, project plans,
-durable project state, implementation tasks, audits, release checklists, and
-rescue plans. Templates are scaffolding, not evidence.
+durable project state, implementation tasks, audits, UI/UX quality assessments,
+release checklists, and rescue plans. Templates are scaffolding, not evidence.
 
 ## Repository layout
 
@@ -281,8 +311,8 @@ python -m compileall -q scripts
 
 CI runs on Windows, Linux, and macOS using Python 3.10 and 3.13. Tests cover
 evidence rules, mode and permission boundaries, open-source decisions, all 81
-role contracts, read-only inventory behavior, output validation, broken-project
-ground truth, and reference integrity.
+role contracts, the UI/UX companion gate, read-only inventory behavior, output
+validation, broken-project ground truth, and reference integrity.
 
 ## What OFE does not claim
 

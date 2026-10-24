@@ -12,9 +12,10 @@ Identify implemented but disconnected capability, duplicate implementations, rep
 3. Canonicalize true blockers and link duplicates.
 4. Separate release blockers, controlled risks, non-blocking improvements, and work to stop.
 5. Prefer reconnecting or exposing existing capability over adding another implementation.
-6. Freeze a minimal delivery scope, fixed acceptance suite, evidence level, rollback, and decision date.
-7. Create only necessary repair tasks with owners, dependencies, costs, acceptance, and stop conditions.
-8. Prevent new requirements from entering unless they replace an existing item through an explicit scope decision.
+6. When UI churn is material, activate [ui-ux-quality.md](ui-ux-quality.md), freeze one interface baseline and representative pilot, and prohibit page-by-page propagation before pilot acceptance.
+7. Freeze a minimal delivery scope, fixed acceptance suite, evidence level, rollback, and decision date.
+8. Create only necessary repair tasks with owners, dependencies, costs, acceptance, and stop conditions.
+9. Prevent new requirements from entering unless they replace an existing item through an explicit scope decision.
 
 ## Mandatory output
 Current deliverable scope; confirmed blockers; deferrable items; work to stop; minimal repairs; fixed acceptance and definition of done; bounded release closure plan; unknowns and required verification.

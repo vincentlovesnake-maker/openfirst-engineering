@@ -1,0 +1,33 @@
+{
+  "id": "ui-ux-defective-project",
+  "request": "The administration workbench looks cheap and is difficult to use. Audit it and recommend the smallest justified repair.",
+  "baseline": {
+    "source": "current committed fixture",
+    "surface_type": "task-workbench",
+    "users": ["first-time operator", "frequent operator", "reviewer"]
+  },
+  "observations": [
+    "functional API tests pass",
+    "the mobile primary action is below repeated row actions",
+    "validation failure clears entered text",
+    "a single desktop screenshot is available"
+  ],
+  "expected": {
+    "primary_mode": "MODE-05",
+    "companion_gate": "UI_UX_QUALITY_GATE",
+    "decision_not_allowed": "UI_QUALITY_ACCEPTANCE_READY",
+    "required_evidence": [
+      "rendered journeys",
+      "state matrix",
+      "desktop and mobile",
+      "keyboard and focus",
+      "separate functional visual interaction accessibility results"
+    ],
+    "required_constraints": [
+      "do not replace the frontend framework without the open-source-first gate",
+      "do not redesign all screens from one screenshot",
+      "pilot before propagation",
+      "preserve entered data after recoverable failure"
+    ]
+  }
+}

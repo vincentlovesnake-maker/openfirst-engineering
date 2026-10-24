@@ -22,6 +22,19 @@ Do not make every improvement a release blocker.
 - License and supply chain: provenance, obligations, source and artifact identity, dependency inventory.
 - Commercial: scope, acceptance, support, cost drivers, and customer outcome evidence when commercial readiness is claimed.
 
+## UI/UX gate
+
+For a user-facing surface, read [ui-ux-quality.md](ui-ux-quality.md) and freeze an interface-specific matrix before scoring or implementation. At minimum, separate:
+
+- functional completion;
+- visual quality and hierarchy;
+- interaction behavior and recovery;
+- accessibility and input-method support.
+
+One result cannot substitute for another. A functional test pass does not prove layout quality; a screenshot does not prove successful interaction; automated accessibility output does not prove usable keyboard or assistive behavior.
+
+A release-facing UI gate must cover representative journeys and relevant normal, empty, loading, success, validation, failure, permission, recovery, long-content, and localization states. Record target viewports, device or DPI assumptions, input methods, rendered evidence, unresolved findings, and the explicit UI decision.
+
 ## Definition of done
 
 Include exact deliverable, excluded scope, acceptance commands or scenarios, required evidence level, accepted unresolved risks, owner, deadline if any, rollback, and stop condition.

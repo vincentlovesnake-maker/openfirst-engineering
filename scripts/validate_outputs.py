@@ -21,6 +21,20 @@ OSS_DECISIONS = {
     "KEEP", "REUSE_NATIVE", "INTEGRATE", "IMPROVE",
     "REPLACE", "MINIMAL_BUILD", "DEFER", "REJECT",
 }
+UI_UX_DECISIONS = {
+    "UI_QUALITY_ACCEPTANCE_READY", "UI_QUALITY_PARTIAL",
+    "UI_QUALITY_BLOCKED", "UI_QUALITY_REJECTED",
+    "NO_UI_CHANGE_NEEDED", "NOT_APPLICABLE",
+}
+UI_UX_RESULTS = {
+    "PASSED", "RISK", "UNVERIFIED", "NOT_IMPLEMENTED",
+    "OUT_OF_SCOPE", "RESOLVED", "DISPUTED",
+}
+UI_UX_FIELDS = {
+    "surface_type", "users", "core_journeys", "states", "viewports",
+    "input_methods", "rendered_evidence", "functional_result",
+    "visual_result", "interaction_result", "accessibility_result", "decision",
+}
 BASE_FIELDS = {
     "mode", "permission", "baseline", "scope", "facts", "inferences",
     "unknowns", "recommendations", "decision", "verification",
@@ -60,6 +74,39 @@ def validate_report(data: object) -> list[str]:
             errors.append("open_source_gate.local_capability must be a list")
         if gate.get("search_status") == "SEARCH_UNAVAILABLE" and not gate.get("unknowns"):
             errors.append("SEARCH_UNAVAILABLE requires unknowns")
+
+    ui_gate = data.get("ui_ux_gate")
+    if "ui_ux_gate" in data and not isinstance(ui_gate, dict):
+        errors.append("ui_ux_gate must be an object")
+    elif isinstance(ui_gate, dict) and ui_gate.get("required"):
+        missing_ui = sorted(UI_UX_FIELDS - set(ui_gate))
+        if missing_ui:
+            errors.append("ui_ux_gate missing: " + ", ".join(missing_ui))
+        if not isinstance(ui_gate.get("surface_type"), str) or not ui_gate.get("surface_type"):
+            errors.append("ui_ux_gate.surface_type must be non-empty")
+        for field in (
+            "users", "core_journeys", "states", "viewports",
+            "input_methods", "rendered_evidence",
+        ):
+            if not isinstance(ui_gate.get(field), list) or not ui_gate.get(field):
+                errors.append(f"ui_ux_gate.{field} must be a non-empty list")
+        for field in (
+            "functional_result", "visual_result", "interaction_result",
+            "accessibility_result",
+        ):
+            if ui_gate.get(field) not in UI_UX_RESULTS:
+                errors.append(f"ui_ux_gate.{field} is invalid")
+        if ui_gate.get("decision") not in UI_UX_DECISIONS:
+            errors.append("ui_ux_gate.decision is invalid")
+        if ui_gate.get("decision") == "NOT_APPLICABLE":
+            errors.append("a required ui_ux_gate cannot be NOT_APPLICABLE")
+        if ui_gate.get("decision") in {"UI_QUALITY_ACCEPTANCE_READY", "NO_UI_CHANGE_NEEDED"}:
+            result_fields = (
+                "functional_result", "visual_result", "interaction_result",
+                "accessibility_result",
+            )
+            if any(ui_gate.get(field) != "PASSED" for field in result_fields):
+                errors.append("UI acceptance or no-change decisions require all four quality results to be PASSED")
 
     tasks = data.get("tasks", [])
     if not isinstance(tasks, list):

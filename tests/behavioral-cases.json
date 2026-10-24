@@ -24,5 +24,13 @@
     "mode": "MODE-06",
     "permission": "TEST_IN_SANDBOX",
     "expected_decision": "IMPROVE"
+  },
+  {
+    "id": "ui-ux-quality-gate",
+    "fixture": "fixtures/ui-ux-defective-project.json",
+    "mode": "MODE-05",
+    "permission": "READ_ONLY",
+    "companions": ["UI_UX_QUALITY_GATE"],
+    "expected_decision": "UI_QUALITY_PARTIAL"
   }
 ]

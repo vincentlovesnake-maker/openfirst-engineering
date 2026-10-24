@@ -11,12 +11,14 @@
 - Out of scope:
 - Existing capability to reuse:
 - Open-source gate result:
+- UI/UX gate result and pilot boundary when applicable:
 - Files / modules / interfaces:
 - Dependencies:
 - Risks:
 - Implementation steps:
 - Required tests and environment:
 - Acceptance evidence:
+- Rendered, journey, state, viewport, input, and accessibility evidence when applicable:
 - Rollback:
 - Definition of done:
 - Independent reviewer:

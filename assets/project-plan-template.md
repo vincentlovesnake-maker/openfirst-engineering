@@ -30,6 +30,14 @@
 - Security and operations:
 - Cost envelope:
 
+## UI/UX quality gate when applicable
+- Surface type, users, and core journeys:
+- States, viewports, devices or DPI, input methods, and locales:
+- Existing design system and native components to reuse:
+- Pilot and protected business behavior:
+- Functional, visual, interaction, and accessibility acceptance:
+- Propagation boundary and stop condition:
+
 ## Tasks
 Use the implementation task template for each task.
 

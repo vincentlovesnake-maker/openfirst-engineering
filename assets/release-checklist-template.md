@@ -14,6 +14,7 @@
 | Install / deploy / upgrade | Clean install, migration, health |  |  |  |
 | Rollback / uninstall / recovery | Executed evidence |  |  |  |
 | Reliability and capacity | Monitoring, backup, workload assumptions |  |  |  |
+| UI/UX quality when applicable | Frozen interface baseline, journeys, states, viewports, input methods, rendered evidence, separate functional / visual / interaction / accessibility results |  |  |  |
 | Customer delivery | Scope, acceptance, support, known issues |  |  |  |
 
 ## Decision

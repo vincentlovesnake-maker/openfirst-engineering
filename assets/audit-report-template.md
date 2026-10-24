@@ -24,6 +24,7 @@ Use canonical IDs and evidence-policy fields. Link duplicate impacts to one root
 ## Verification
 - Commands or methods and results:
 - End-to-end evidence:
+- UI/UX gate when applicable: interface baseline, journeys, states, viewports, input methods, rendered evidence, and separate functional / visual / interaction / accessibility results
 - Unverified conditions:
 - Historical evidence rejected as stale:
 

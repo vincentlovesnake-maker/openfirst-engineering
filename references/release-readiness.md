@@ -12,6 +12,7 @@ Decide whether a frozen candidate can be released or delivered to the named audi
 6. Reliability: monitoring, alerts, backup and restore, capacity assumptions, queues and scheduled work.
 7. Customer delivery: scope, acceptance, support, known issues, training or runbook, commercial promises.
 8. Independent approval for high-impact unresolved risks.
+9. User-facing quality: activate [ui-ux-quality.md](ui-ux-quality.md), confirm the interface baseline and representative journeys, and record separate functional, visual, interaction, and accessibility results. A user-interface release must not silently omit this gate; use `NOT_APPLICABLE` only when no user-facing contract changes.
 
 ## Decision
 - GO: every mandatory gate passes on the frozen candidate.

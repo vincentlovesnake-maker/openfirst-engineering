@@ -62,6 +62,87 @@ class OutputValidationTests(unittest.TestCase):
         errors = validate_report(report)
         self.assertTrue(any("tasks[0] missing" in error for error in errors))
 
+    def test_ui_ux_gate_requires_rendered_and_separate_results(self):
+        report = base_report("MODE-04", "IMPLEMENT_SCOPED")
+        report["ui_ux_gate"] = {
+            "required": True,
+            "surface_type": "task-workbench",
+            "users": ["operator"],
+            "core_journeys": ["create and recover"],
+            "states": ["normal", "failure"],
+            "viewports": ["desktop", "mobile"],
+            "input_methods": ["keyboard", "pointer"],
+            "rendered_evidence": [],
+            "functional_result": "PASSED",
+            "visual_result": "UNVERIFIED",
+            "interaction_result": "PASSED",
+            "accessibility_result": "UNVERIFIED",
+            "decision": "UI_QUALITY_ACCEPTANCE_READY",
+        }
+        errors = validate_report(report)
+        self.assertTrue(any("rendered_evidence" in error for error in errors))
+        self.assertTrue(any("all four quality results" in error for error in errors))
+
+    def test_ui_ux_gate_accepts_bounded_complete_contract(self):
+        report = base_report("MODE-04", "IMPLEMENT_SCOPED")
+        report["ui_ux_gate"] = {
+            "required": True,
+            "surface_type": "task-workbench",
+            "users": ["operator"],
+            "core_journeys": ["create and recover"],
+            "states": ["normal", "failure"],
+            "viewports": ["desktop", "mobile"],
+            "input_methods": ["keyboard", "pointer"],
+            "rendered_evidence": ["browser run ui-001"],
+            "functional_result": "PASSED",
+            "visual_result": "PASSED",
+            "interaction_result": "PASSED",
+            "accessibility_result": "PASSED",
+            "decision": "UI_QUALITY_ACCEPTANCE_READY",
+        }
+        self.assertEqual(validate_report(report), [])
+
+    def test_ui_ux_no_change_requires_verified_quality(self):
+        report = base_report("MODE-05", "READ_ONLY")
+        report["findings"] = []
+        report["ui_ux_gate"] = {
+            "required": True,
+            "surface_type": "task-workbench",
+            "users": ["operator"],
+            "core_journeys": ["review current state"],
+            "states": ["normal"],
+            "viewports": ["desktop"],
+            "input_methods": ["keyboard", "pointer"],
+            "rendered_evidence": ["browser run ui-002"],
+            "functional_result": "PASSED",
+            "visual_result": "UNVERIFIED",
+            "interaction_result": "PASSED",
+            "accessibility_result": "UNVERIFIED",
+            "decision": "NO_UI_CHANGE_NEEDED",
+        }
+        errors = validate_report(report)
+        self.assertTrue(any("all four quality results" in error for error in errors))
+
+    def test_required_ui_ux_gate_cannot_be_not_applicable(self):
+        report = base_report("MODE-04", "IMPLEMENT_SCOPED")
+        report["ui_ux_gate"] = {
+            "required": True,
+            "surface_type": "task-workbench",
+            "users": ["operator"],
+            "core_journeys": ["submit"],
+            "states": ["normal"],
+            "viewports": ["desktop"],
+            "input_methods": ["pointer"],
+            "rendered_evidence": ["browser run ui-003"],
+            "functional_result": "PASSED",
+            "visual_result": "PASSED",
+            "interaction_result": "PASSED",
+            "accessibility_result": "PASSED",
+            "decision": "NOT_APPLICABLE",
+        }
+        errors = validate_report(report)
+        self.assertTrue(any("cannot be NOT_APPLICABLE" in error for error in errors))
+
 
 if __name__ == "__main__":
     unittest.main()
