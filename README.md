@@ -276,7 +276,7 @@ dependencies.
 
 ```bash
 python -m unittest discover -s tests -v
-python -m py_compile scripts/*.py
+python -m compileall -q scripts
 ```
 
 CI runs on Windows, Linux, and macOS using Python 3.10 and 3.13. Tests cover

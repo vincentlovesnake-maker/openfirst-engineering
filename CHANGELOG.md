@@ -4,6 +4,13 @@ All notable changes to OpenFirst Engineering are documented in this file.
 
 The project follows semantic versioning for tagged public releases.
 
+## 1.0.1 - 2026-10-25
+
+### Fixed
+
+- Replaced shell-dependent Python wildcard compilation with `compileall` so
+  the documented command and CI work consistently on Windows, Linux, and macOS.
+
 ## 1.0.0 - 2026-10-25
 
 ### Added

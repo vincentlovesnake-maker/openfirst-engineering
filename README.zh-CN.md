@@ -171,7 +171,7 @@ tests/                           单元、完整性、场景和行为测试
 
 ```bash
 python -m unittest discover -s tests -v
-python -m py_compile scripts/*.py
+python -m compileall -q scripts
 ```
 
 CI 在 Windows、Linux 和 macOS 上使用 Python 3.10 与 3.13 验证。
