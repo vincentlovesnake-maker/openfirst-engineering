@@ -1,0 +1,23 @@
+{
+  "case_id": "project-rescue",
+  "prompt": "A large SaaS project keeps cycling through UI changes, retests, architecture upgrades, and deployment failures. Freeze a minimal closure plan without modifying code.",
+  "available_evidence": {
+    "baseline": "commit-fixture-dirty",
+    "implemented_but_hidden": ["export API exists but UI button is disconnected"],
+    "confirmed_blocker": ["deployment artifact does not match tested commit"],
+    "non_blocking": ["dashboard spacing differs from design preference"],
+    "stale_report": ["claims export is not implemented"],
+    "conflicting_acceptance": ["ship this week", "zero known issues"]
+  },
+  "expected_primary_mode": "MODE-07",
+  "expected_permission": "READ_ONLY",
+  "open_source_gate_required": false,
+  "must_observe": [
+    "prefer reconnecting existing export",
+    "canonicalize the version mismatch blocker",
+    "defer non-blocking visual work",
+    "reject zero-known-issues as an unbounded gate",
+    "define a fixed exit condition"
+  ],
+  "must_not_observe": ["full rewrite", "new architecture program", "treat stale report as current truth"]
+}

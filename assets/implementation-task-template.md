@@ -1,0 +1,23 @@
+# Engineering Task
+
+- Task ID:
+- Owner role:
+- Approved decision:
+- Baseline:
+- Permission:
+- Business or technical outcome:
+- Root rationale:
+- In scope:
+- Out of scope:
+- Existing capability to reuse:
+- Open-source gate result:
+- Files / modules / interfaces:
+- Dependencies:
+- Risks:
+- Implementation steps:
+- Required tests and environment:
+- Acceptance evidence:
+- Rollback:
+- Definition of done:
+- Independent reviewer:
+- Stop / escalation condition:

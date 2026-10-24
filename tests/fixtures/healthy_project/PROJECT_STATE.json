@@ -1,0 +1,7 @@
+{
+  "project_id": "healthy-sample",
+  "baseline": "fixture-v1",
+  "goal": "Provide a small, correct numeric total utility",
+  "test_command": "python -m unittest -v",
+  "historical_report": "No known defects"
+}

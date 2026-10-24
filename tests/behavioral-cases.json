@@ -1,0 +1,28 @@
+[
+  {
+    "id": "desktop-wrapper",
+    "fixture": "fixtures/desktop-wrapper-case.json",
+    "mode": "MODE-02",
+    "permission": "PLAN_ONLY"
+  },
+  {
+    "id": "project-rescue",
+    "fixture": "fixtures/rescue-case.json",
+    "mode": "MODE-07",
+    "permission": "READ_ONLY"
+  },
+  {
+    "id": "healthy-objectivity",
+    "fixture": "fixtures/healthy_project",
+    "mode": "MODE-05",
+    "permission": "READ_ONLY",
+    "expected_decision": "NO_CHANGE_NEEDED"
+  },
+  {
+    "id": "defect-objectivity",
+    "fixture": "fixtures/defective_project",
+    "mode": "MODE-06",
+    "permission": "TEST_IN_SANDBOX",
+    "expected_decision": "IMPROVE"
+  }
+]
