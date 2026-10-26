@@ -1,6 +1,6 @@
 ---
 name: openfirst-engineering
-description: "Use for evidence-led software decisions across AI/Agent, Web, desktop, and UI/UX projects: project audits, hidden-capability discovery, open-source transformation and selection before custom development, root-cause diagnosis, bounded engineering plans, project rescue, and release readiness. Decide what to build, keep, integrate, repair, stop, or ship. Do not use for a narrow edit with a known solution and explicit authorization."
+description: "Use for evidence-led software decisions across AI/Agent, Web, desktop, and UI/UX projects: project audits, hidden-capability discovery, open-source transformation and selection before custom development, root-cause diagnosis, bounded engineering plans, real visual and interaction audits, design-reference implementation, visual regression, end-to-end UAT, project rescue, and release readiness. Decide what to build, keep, integrate, repair, stop, or ship. Do not use for a narrow edit with a known solution and explicit authorization."
 metadata:
   short-description: OSS-first audits, root cause, UI/UX, rescue, and release decisions
 ---
@@ -21,7 +21,7 @@ Use it for project audits, open-source transformation, build-versus-reuse decisi
 6. Prefer the smallest change that satisfies fixed acceptance conditions. Do not turn rescue, audit, or release work into an unbounded redesign.
 7. A developer or implementing agent cannot be the sole independent approver of its own major change. Record actual review independence; never claim multiple models or agents that were not used.
 8. Stop when the predefined completion condition is met or when a named blocker requires user or external action. Do not keep expanding scope to improve an arbitrary score.
-9. Functional correctness does not prove visual or interaction quality, and a screenshot does not prove workflow completion or accessibility. User-facing work must activate the UI/UX quality gate.
+9. Functional correctness does not prove visual or interaction quality, and a screenshot does not prove workflow completion or accessibility. User-facing work must activate the UI/UX quality gate; use MODE-09 through MODE-12 when the requested decision is specifically visual audit, reference implementation, regression, or user acceptance.
 
 ## Start every task
 
@@ -47,12 +47,16 @@ Use it for project audits, open-source transformation, build-versus-reuse decisi
 | MODE-06 ROOT_CAUSE_DIAGNOSIS | Diagnose a repeatable or persistent failure | [root-cause-diagnosis.md](references/root-cause-diagnosis.md) |
 | MODE-07 PROJECT_RESCUE_AND_CLOSURE | Stop churn and converge a long-running project | [project-rescue.md](references/project-rescue.md) |
 | MODE-08 RELEASE_READINESS | Decide release or customer delivery readiness | [release-readiness.md](references/release-readiness.md) |
+| MODE-09 VISUAL_UX_AUDIT | Audit rendered pages and interactions on the current build | [visual-ux-audit.md](references/visual-ux-audit.md) |
+| MODE-10 DESIGN_REFERENCE_IMPLEMENTATION | Map a reference design to real components and, when authorized, implement it | [design-reference-implementation.md](references/design-reference-implementation.md) |
+| MODE-11 VISUAL_REGRESSION | Compare equivalent rendered baselines and classify changes | [visual-regression.md](references/visual-regression.md) |
+| MODE-12 END_TO_END_UAT | Verify complete user journeys, persistence, roles, and delivery outcomes | [end-to-end-uat.md](references/end-to-end-uat.md) |
 
 Use model judgment from target, permissions, and project state. Do not use keyword matching alone as a mode decision.
 
-## UI/UX quality gate
+## UI/UX quality gate and visual modes
 
-The UI/UX gate is a cross-cutting companion, not a ninth operating mode. Keep the lifecycle decision in MODE-01 through MODE-08, then activate the gate for visual design, interaction, responsive behavior, desktop or mobile surfaces, accessibility, localization layout, frontend performance, or user-facing state and recovery work.
+The UI/UX gate remains a cross-cutting companion for any user-facing mode. MODE-09 through MODE-12 add bounded workflows for real rendered audit, design-reference work, visual regression, and end-to-end acceptance; they do not replace the gate or convert a general lifecycle decision into a visual task. Read [visual-role-routing.md](references/visual-role-routing.md) for the smallest relevant role set and [visual-tooling.md](references/visual-tooling.md) before claiming browser, accessibility, screenshot-diff, or desktop evidence.
 
 The gate requires a frozen interface baseline, actual rendered evidence when available, representative user journeys, state and viewport coverage, explicit functional/visual/interaction/accessibility results, and pilot acceptance before broad propagation. Do not approve interface quality from source inspection, HTTP success, detector output, or a single screenshot alone.
 
@@ -84,7 +88,7 @@ Emergency containment may precede full research only when delay would materially
 
 Read [evidence-policy.md](references/evidence-policy.md) for statuses, E0-E5 levels, finding records, conflict handling, and current-version rules. Read [quality-gates.md](references/quality-gates.md) before defining pass or fail, release, or completion conditions.
 
-For user-facing work, also read [ui-ux-quality.md](references/ui-ux-quality.md) and use [ui-ux-audit-template.md](assets/ui-ux-audit-template.md) when a dedicated interface assessment is needed.
+For user-facing work, also read [ui-ux-quality.md](references/ui-ux-quality.md). Use the mode-specific templates for visual audit, design-reference implementation, visual regression, or UAT; retain [ui-ux-audit-template.md](assets/ui-ux-audit-template.md) for cross-cutting assessments under MODE-01 through MODE-08.
 
 Required status vocabulary: CONFIRMED, RISK, UNVERIFIED, PASSED, NOT_IMPLEMENTED, OUT_OF_SCOPE, RESOLVED, DISPUTED.
 
@@ -108,6 +112,7 @@ Return the shortest deliverable that supports the decision, but include:
 - existing or native capability findings;
 - open-source gate result when triggered;
 - UI/UX gate result, rendered evidence, pilot boundary, and separate functional, visual, interaction, and accessibility results when user-facing work is in scope;
+- for MODE-09 through MODE-12, frozen route, role, viewport, browser or desktop host, data state, screenshots or capture identity, console and network evidence, and explicit UNVERIFIED conditions;
 - options and explicit decision;
 - tasks with owner role, boundary, dependencies, acceptance, rollback, and definition of done;
 - independent review result for major decisions;

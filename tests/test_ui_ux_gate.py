@@ -10,7 +10,7 @@ class UiUxGateContractTests(unittest.TestCase):
         skill = (ROOT / "SKILL.md").read_text(encoding="utf-8-sig")
         self.assertIn("UI/UX quality gate", skill)
         self.assertIn("references/ui-ux-quality.md", skill)
-        self.assertIn("not a ninth operating mode", skill)
+        self.assertIn("MODE-09 through MODE-12", skill)
 
     def test_gate_contains_evidence_constraints_and_decisions(self):
         text = (ROOT / "references" / "ui-ux-quality.md").read_text(encoding="utf-8-sig")

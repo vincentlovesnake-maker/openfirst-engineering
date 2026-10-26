@@ -4,7 +4,7 @@
 
 Provide evidence-led constraints for auditing, planning, implementing, rescuing, or releasing user-facing interfaces without turning one complaint into an unbounded redesign.
 
-`UI_UX_QUALITY_GATE` is a companion to MODE-01 through MODE-08, not a separate lifecycle mode.
+`UI_UX_QUALITY_GATE` is a cross-cutting companion to all applicable modes. MODE-09 through MODE-12 are specialized workflows for real visual audit, reference implementation, visual regression, and user acceptance; the gate still supplies their shared quality floor.
 
 ## Activation
 
@@ -156,6 +156,8 @@ Use one explicit result:
 Include primary mode and permission, interface baseline, surface type, users and journeys, states, viewports and input methods, rendered and deterministic evidence, canonical findings, separate functional/visual/interaction/accessibility results, open-source or native-reuse decision when triggered, pilot and propagation boundary, unresolved conditions, decision, rollback, and retest criteria.
 
 Use [../assets/ui-ux-audit-template.md](../assets/ui-ux-audit-template.md) for a dedicated assessment.
+
+For specialized work, use [visual-ux-audit.md](visual-ux-audit.md), [design-reference-implementation.md](design-reference-implementation.md), [visual-regression.md](visual-regression.md), or [end-to-end-uat.md](end-to-end-uat.md) and the corresponding asset template.
 
 ## Stop conditions
 

@@ -18,6 +18,16 @@ REQUIRED = {
     "baseline", "method", "evidence_level", "evidence_location",
     "fact", "inference", "unknowns", "recommendation", "retest",
 }
+VISUAL_TYPES = {
+    "VISUAL", "LAYOUT", "INTERACTION", "ACCESSIBILITY", "RESPONSIVE",
+    "BUSINESS_FLOW", "DATA_BINDING", "DEPLOYMENT_ASSET", "UNKNOWN",
+}
+VISUAL_REQUIRED = {
+    "project_version", "route", "user_role", "viewport", "browser",
+    "design_reference", "screenshot", "reproduction_steps", "expected",
+    "actual", "finding_type", "root_cause_evidence", "change_scope",
+    "regression_acceptance",
+}
 
 
 def validate_findings(data: object, root: Path | None = None) -> list[str]:
@@ -55,6 +65,17 @@ def validate_findings(data: object, root: Path | None = None) -> list[str]:
             errors.append(f"{prefix}: CONFIRMED requires a verified fact")
         if finding.get("status") == "RESOLVED" and not finding.get("retest_result"):
             errors.append(f"{prefix}: RESOLVED requires retest_result")
+        if "finding_type" in finding:
+            if finding.get("finding_type") not in VISUAL_TYPES:
+                errors.append(f"{prefix}.finding_type: invalid")
+            missing_visual = sorted(VISUAL_REQUIRED - set(finding))
+            if missing_visual:
+                errors.append(f"{prefix}: visual finding missing {', '.join(missing_visual)}")
+            for field in VISUAL_REQUIRED - {"finding_type"}:
+                if field in finding and not isinstance(finding[field], (str, list, dict)):
+                    errors.append(f"{prefix}.{field}: must be traceable text or structured evidence")
+                elif field in finding and not finding[field]:
+                    errors.append(f"{prefix}.{field}: must be non-empty")
         if root and isinstance(finding.get("evidence_location"), str):
             location = finding["evidence_location"]
             if location.startswith("file:"):

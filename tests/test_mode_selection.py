@@ -3,7 +3,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VALID_MODES = {f"MODE-{number:02d}" for number in range(1, 9)}
+VALID_MODES = {f"MODE-{number:02d}" for number in range(1, 13)}
 VALID_PERMISSIONS = {
     "READ_ONLY", "PLAN_ONLY", "IMPLEMENT_SCOPED",
     "TEST_IN_SANDBOX", "RELEASE_PREPARATION",
@@ -34,6 +34,14 @@ class ModeSelectionContractTests(unittest.TestCase):
         for case in cases:
             if case["mode"] in {"MODE-01", "MODE-02", "MODE-03", "MODE-05", "MODE-07"}:
                 self.assertNotEqual(case["permission"], "IMPLEMENT_SCOPED")
+
+    def test_visual_modes_have_bounded_permissions(self):
+        cases = json.loads((ROOT / "tests" / "behavioral-cases.json").read_text(encoding="utf-8-sig"))
+        by_id = {case["id"]: case for case in cases}
+        self.assertEqual(by_id["visual-runtime-audit"]["mode"], "MODE-09")
+        self.assertEqual(by_id["design-reference-plan"]["permission"], "PLAN_ONLY")
+        self.assertEqual(by_id["visual-regression"]["permission"], "TEST_IN_SANDBOX")
+        self.assertEqual(by_id["end-to-end-uat"]["mode"], "MODE-12")
 
 
 if __name__ == "__main__":

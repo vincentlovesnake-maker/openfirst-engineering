@@ -50,3 +50,15 @@ Historical evidence is context, not current pass evidence, unless identity, rele
 Preserve both evidence sets for disputed conclusions. Decide by relevance, reproducibility, and source authority, not vote count. Disclose when review is only a separated self-review rather than a separate agent or person.
 
 Use scripts/evidence_check.py to validate structured finding records.
+
+## Visual and interaction finding extension
+
+For MODE-09 through MODE-12, or whenever a material issue is based on rendered or interactive evidence, add:
+
+- project version or commit, route or screen, user role, viewport or DPI, browser or desktop host;
+- reference design or `NOT_APPLICABLE`, actual screenshot or capture identity, and reproduction steps;
+- expected and actual result;
+- finding type: `VISUAL`, `LAYOUT`, `INTERACTION`, `ACCESSIBILITY`, `RESPONSIVE`, `BUSINESS_FLOW`, `DATA_BINDING`, `DEPLOYMENT_ASSET`, or `UNKNOWN`;
+- root-cause evidence, smallest change scope, and regression acceptance condition.
+
+A visual finding without an actual current capture is normally UNVERIFIED. An inaccessible environment is an UNVERIFIED coverage item, not proof that a defect exists. Cache, build, asset, service-worker, or deployment identity differences must be investigated before assigning a design root cause.

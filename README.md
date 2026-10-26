@@ -16,7 +16,8 @@
 OpenFirst Engineering (OFE) is a reusable **Codex Skill and AI coding-agent
 engineering system** for project audits, open-source transformation, build vs.
 reuse decisions, root-cause diagnosis, engineering planning, controlled
-implementation, UI/UX quality gates, project rescue, and release readiness.
+implementation, real visual and interaction audit, design-reference implementation,
+visual regression, end-to-end UAT, project rescue, and release readiness.
 
 It helps an agent decide **what to build, keep, reuse, integrate, repair, stop,
 or release**. Broad software requests become bounded decisions backed by current
@@ -68,12 +69,13 @@ OFE makes those questions part of the workflow before large changes are made.
 | Evidence discipline | Distinguishes facts, supported inferences, unknowns, recommendations, and disputed conclusions |
 | Quality gates | Defines observable correctness, security, reliability, delivery, license, and commercial conditions |
 | UI/UX quality gate | Requires rendered journeys, state and viewport coverage, accessibility, recovery, and separate functional, visual, interaction, and accessibility results |
+| Visual and UAT modes | Operates real pages, maps references to real components and data, classifies equivalent screenshot diffs, and verifies persistence and role isolation |
 | Minimal-change planning | Prefers the smallest justified change that preserves stable behavior and upstream compatibility |
 | Release and rescue closure | Defines rollback, retest, ownership, stop conditions, and unresolved risk without manufacturing success |
 | Professional review views | Provides 81 compact responsibility contracts without pretending they are separate people or agents |
 | Structured validation | Includes local scripts for inventory, finding validation, and decision-report validation |
 
-## Eight operating modes
+## Twelve operating modes
 
 | Mode | Use it to decide | Typical result |
 |---|---|---|
@@ -85,6 +87,10 @@ OFE makes those questions part of the workflow before large changes are made.
 | `MODE-06 ROOT_CAUSE_DIAGNOSIS` | Why a concrete failure persists | Reproduction, causal chain, smallest control, retest |
 | `MODE-07 PROJECT_RESCUE_AND_CLOSURE` | How to stop churn and converge delivery | Frozen exit conditions and closure plan |
 | `MODE-08 RELEASE_READINESS` | Whether a candidate can ship | Go, conditional go, no-go, or defer evidence |
+| `MODE-09 VISUAL_UX_AUDIT` | What actual rendered pages and interactions do | Traceable visual, interaction, accessibility, and data-binding findings |
+| `MODE-10 DESIGN_REFERENCE_IMPLEMENTATION` | How a reference maps to real routes and components | Bounded plan or explicitly authorized implementation |
+| `MODE-11 VISUAL_REGRESSION` | Whether an equivalent candidate changed unexpectedly | Reviewed baseline, candidate, diff, and classification |
+| `MODE-12 END_TO_END_UAT` | Whether real users can complete business journeys | Persistence, readback, role isolation, recovery, and delivery evidence |
 
 The router selects a mode from the requested decision, project state, and
 authorization. Missing source reduces confidence; it does not silently change
@@ -92,10 +98,10 @@ the task into implementation.
 
 ## UI/UX quality gate
 
-UI/UX is a cross-cutting companion gate rather than a ninth lifecycle mode. A
-user-facing audit remains MODE-05, a persistent interface failure remains
-MODE-06, an approved frontend change remains MODE-04, and a release decision
-remains MODE-08.
+UI/UX remains a cross-cutting companion gate. General project audit, diagnosis,
+implementation, rescue, and release decisions keep their lifecycle mode;
+MODE-09 through MODE-12 provide specialized workflows when the primary request
+is rendered audit, reference implementation, regression, or user acceptance.
 
 When applicable, the gate freezes the interface build, users, core journeys,
 states, viewports, devices or DPI, input methods, locales, existing design
@@ -265,6 +271,15 @@ interaction, and accessibility results, identify canonical root causes, and
 recommend a bounded pilot before propagation.
 ```
 
+### Real visual and UAT verification
+
+```text
+Use $openfirst-engineering in MODE-09 or MODE-12 with TEST_IN_SANDBOX permission.
+Operate the actual page, retain route, role, viewport, browser, and screenshot
+evidence, correlate UI actions with network, persistence, readback, and business
+state, and mark unreachable conditions UNVERIFIED rather than inferring a result.
+```
+
 ## Output contract
 
 An OFE decision should include, in the shortest useful form:
@@ -283,8 +298,10 @@ An OFE decision should include, in the shortest useful form:
 
 ## Included tools
 
-The helper scripts use only the Python standard library and intentionally make
-no network requests.
+The core inventory and validators use only the Python standard library and
+intentionally make no network requests. The optional visual runtime probe uses
+already installed Playwright, pixelmatch, and pngjs against an explicitly
+provided isolated target; it does not install dependencies.
 
 ```bash
 # Read-only project inventory
@@ -295,6 +312,11 @@ python scripts/evidence_check.py findings.json --root /path/to/project
 
 # Decision-output validation
 python scripts/validate_outputs.py report.json
+
+# Optional isolated browser fixture when the documented tools are available
+node scripts/visual_runtime_probe.cjs --base http://127.0.0.1:PORT \
+  --unreachable http://127.0.0.1:CLOSED_PORT/missing \
+  --output /approved/evidence --result /approved/evidence/result.json
 ```
 
 Inventory excludes known secret files, caches, build outputs, vendor trees, and
@@ -322,8 +344,9 @@ tests/                           Unit, integrity, scenario, and behavioral tests
 
 ## Development and validation
 
-Python 3.10 or newer is recommended. The test suite has no third-party runtime
-dependencies.
+Python 3.10 or newer is recommended. The core portable suite has no third-party
+runtime dependencies; the optional real-browser fixture runs only when an
+existing Playwright, browser, pixelmatch, and pngjs toolchain is explicitly configured.
 
 ```bash
 python -m unittest discover -s tests -v
@@ -331,9 +354,10 @@ python -m compileall -q scripts
 ```
 
 CI runs on Windows, Linux, and macOS using Python 3.10 and 3.13. Tests cover
-discovery metadata, evidence rules, mode and permission boundaries, open-source
-decisions, all 81 role contracts, the UI/UX companion gate, read-only inventory
-behavior, output validation, broken-project ground truth, and reference integrity.
+discovery metadata, evidence rules, twelve mode and permission boundaries,
+open-source decisions, all 81 role contracts, the UI/UX companion gate,
+read-only inventory behavior, output validation, broken-project ground truth,
+reference integrity, and optional real-browser visual and UAT fixtures.
 
 ## What OFE does not claim
 

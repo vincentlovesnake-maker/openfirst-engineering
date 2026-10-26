@@ -4,6 +4,21 @@ All notable changes to OpenFirst Engineering are documented in this file.
 
 The project follows semantic versioning for tagged public releases.
 
+## 1.2.0 - 2026-10-27
+
+### Added
+
+- `MODE-09 VISUAL_UX_AUDIT`, `MODE-10 DESIGN_REFERENCE_IMPLEMENTATION`, `MODE-11 VISUAL_REGRESSION`, and `MODE-12 END_TO_END_UAT` with explicit permission, evidence, stop, and handoff boundaries.
+- Mode-specific references, role routing using the existing 81-role catalog, and templates for visual audit, reference implementation, regression, and UAT.
+- Extended visual finding schema for route, role, viewport, browser or host, screenshots, expected and actual behavior, root-cause evidence, smallest change scope, and regression acceptance.
+- Optional isolated Playwright runtime probe and repeatable fixtures covering a healthy page, overflow, UI-only fake success, reference mapping, shared-component regression, unreachable environments, and cache or asset identity changes.
+- Environment-specific visual tooling guidance that discloses unavailable automated accessibility and desktop validation.
+
+### Changed
+
+- Expanded structured output validation and behavioral routing from eight to twelve modes while preserving compatibility for existing findings and reports.
+- Kept `UI_UX_QUALITY_GATE` as the shared quality floor across lifecycle and specialized visual modes.
+
 ## 1.1.1 - 2026-10-25
 
 ### Changed

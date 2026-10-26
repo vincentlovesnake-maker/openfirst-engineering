@@ -11,7 +11,7 @@ from pathlib import Path
 
 from evidence_check import validate_findings
 
-MODES = {f"MODE-{number:02d}" for number in range(1, 9)}
+MODES = {f"MODE-{number:02d}" for number in range(1, 13)}
 PERMISSIONS = {
     "READ_ONLY", "PLAN_ONLY", "IMPLEMENT_SCOPED",
     "TEST_IN_SANDBOX", "RELEASE_PREPARATION",
@@ -55,7 +55,7 @@ def validate_report(data: object) -> list[str]:
     if missing:
         errors.append("missing base fields: " + ", ".join(missing))
     if data.get("mode") not in MODES:
-        errors.append("mode must be MODE-01 through MODE-08")
+        errors.append("mode must be MODE-01 through MODE-12")
     if data.get("permission") not in PERMISSIONS:
         errors.append("invalid permission")
     if data.get("completion_state") not in COMPLETION:
@@ -137,6 +137,10 @@ def validate_report(data: object) -> list[str]:
         "MODE-05": {"findings"},
         "MODE-07": {"deliverable_scope", "blockers", "deferred_items", "stop_work", "completion_definition"},
         "MODE-08": {"release_decision", "gates"},
+        "MODE-09": {"coverage_matrix", "visual_environment", "findings"},
+        "MODE-10": {"design_reference", "component_inventory", "implementation_plan", "authorization_state"},
+        "MODE-11": {"baseline_capture", "comparison_capture", "diff_result", "review_classification"},
+        "MODE-12": {"uat_journeys", "business_result", "role_isolation", "data_readback"},
     }
     for field in mode_fields.get(mode, set()):
         if field not in data:

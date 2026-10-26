@@ -1,6 +1,6 @@
 interface:
   display_name: "OpenFirst Engineering"
-  short_description: "开源优先项目审计、根因诊断、UI/UX、项目救援与发布决策"
-  default_prompt: "Use $openfirst-engineering to audit the real project state, discover reusable capability, compare mature open-source options before custom work, diagnose root causes, control UI/UX and implementation scope, rescue stalled delivery, and define verifiable release or stop conditions."
+  short_description: "开源优先审计、视觉/UAT、根因诊断、项目救援与发布决策"
+  default_prompt: "Use $openfirst-engineering to audit the real project state, discover reusable capability, compare mature open-source options before custom work, diagnose root causes, verify real rendered UI and end-to-end journeys, control implementation scope, rescue stalled delivery, and define verifiable release or stop conditions."
 policy:
   allow_implicit_invocation: true

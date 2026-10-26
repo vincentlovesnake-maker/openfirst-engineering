@@ -143,6 +143,43 @@ class OutputValidationTests(unittest.TestCase):
         errors = validate_report(report)
         self.assertTrue(any("cannot be NOT_APPLICABLE" in error for error in errors))
 
+    def test_visual_audit_requires_runtime_contract(self):
+        report = base_report("MODE-09", "READ_ONLY")
+        report["findings"] = []
+        errors = validate_report(report)
+        self.assertTrue(any("MODE-09 requires coverage_matrix" in error for error in errors))
+        self.assertTrue(any("MODE-09 requires visual_environment" in error for error in errors))
+
+    def test_design_reference_defaults_can_remain_plan_only(self):
+        report = base_report("MODE-10", "PLAN_ONLY")
+        report.update({
+            "design_reference": "reference.png",
+            "component_inventory": ["existing button"],
+            "implementation_plan": ["map token and pilot one route"],
+            "authorization_state": "PLANNING_ONLY",
+        })
+        self.assertEqual(validate_report(report), [])
+
+    def test_visual_regression_contract(self):
+        report = base_report("MODE-11", "TEST_IN_SANDBOX")
+        report.update({
+            "baseline_capture": "before.png",
+            "comparison_capture": "after.png",
+            "diff_result": {"changed_pixels": 42},
+            "review_classification": "UNINTENDED_CHANGE",
+        })
+        self.assertEqual(validate_report(report), [])
+
+    def test_uat_contract_requires_business_readback(self):
+        report = base_report("MODE-12", "TEST_IN_SANDBOX")
+        report.update({
+            "uat_journeys": ["save and reload"],
+            "business_result": "PASSED",
+            "role_isolation": "PASSED",
+        })
+        errors = validate_report(report)
+        self.assertTrue(any("MODE-12 requires data_readback" in error for error in errors))
+
 
 if __name__ == "__main__":
     unittest.main()

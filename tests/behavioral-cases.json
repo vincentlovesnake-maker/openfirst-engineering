@@ -32,5 +32,37 @@
     "permission": "READ_ONLY",
     "companions": ["UI_UX_QUALITY_GATE"],
     "expected_decision": "UI_QUALITY_PARTIAL"
+  },
+  {
+    "id": "visual-runtime-audit",
+    "fixture": "fixtures/visual_runtime/cases.json",
+    "mode": "MODE-09",
+    "permission": "TEST_IN_SANDBOX",
+    "companions": ["UI_UX_QUALITY_GATE"],
+    "expected_decision": "EVIDENCE_LED_FINDINGS"
+  },
+  {
+    "id": "design-reference-plan",
+    "fixture": "fixtures/visual_runtime/cases.json",
+    "mode": "MODE-10",
+    "permission": "PLAN_ONLY",
+    "companions": ["UI_UX_QUALITY_GATE"],
+    "expected_decision": "BOUNDED_IMPLEMENTATION_PLAN"
+  },
+  {
+    "id": "visual-regression",
+    "fixture": "fixtures/visual_runtime/cases.json",
+    "mode": "MODE-11",
+    "permission": "TEST_IN_SANDBOX",
+    "companions": ["UI_UX_QUALITY_GATE"],
+    "expected_decision": "CLASSIFIED_DIFF"
+  },
+  {
+    "id": "end-to-end-uat",
+    "fixture": "fixtures/visual_runtime/cases.json",
+    "mode": "MODE-12",
+    "permission": "TEST_IN_SANDBOX",
+    "companions": ["UI_UX_QUALITY_GATE"],
+    "expected_decision": "BUSINESS_READBACK_REQUIRED"
   }
 ]

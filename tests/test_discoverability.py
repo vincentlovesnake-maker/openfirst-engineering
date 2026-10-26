@@ -17,6 +17,8 @@ class DiscoverabilityContractTests(unittest.TestCase):
             "open-source transformation",
             "root-cause diagnosis",
             "ui/ux",
+            "visual regression",
+            "end-to-end uat",
             "project rescue",
             "release readiness",
         ):
@@ -26,7 +28,7 @@ class DiscoverabilityContractTests(unittest.TestCase):
     def test_agent_metadata_names_decision_domains(self):
         text = (ROOT / "agents" / "openai.yaml").read_text(encoding="utf-8-sig")
         for phrase in (
-            "项目审计", "根因诊断", "UI/UX", "项目救援", "发布决策",
+            "视觉/UAT", "根因诊断", "项目救援", "发布决策",
             "compare mature open-source options",
         ):
             self.assertIn(phrase, text)

@@ -37,7 +37,13 @@ Total: 81 responsibility views, including OSS-01 Independent Open-Source Selecti
 | Open-source desktop wrapper | DESK-01 | OSS-01, LIC-01 | ARC-02, REL-03, QA-04 |
 | Persistent production defect | RCA-01 | CODE-REV-01 | SRE-01, OBS-01, owning engineer |
 | UI/UX quality convergence | UX-01 | UI-01, A11Y-01 | PRD-02, UX-02, QA-02, QA-04 |
+| Rendered visual and interaction audit | QA-02 | UX-01, A11Y-01 | UI-01, FE-01, QA-03, QA-04 |
+| Design-reference implementation | UI-01 | UX-01, CODE-REV-01 | FE-01, PRD-02, OSS-01, QA-02 |
+| Visual regression | QA-03 | UI-01, QA-05 | FE-01, BUILD-01, CONF-01 |
+| End-to-end UAT | QA-04 | PRD-03, QA-05 | FULL-01, REL-04, DESK-01 |
 | Project rescue | PMO-01 | REL-04 | PRD-01, ARC-03, QA-01, DEL-01 |
 | Release decision | REL-04 | QA-05, SEC-05 | OPS-01, LIC-01, CS-01 |
 
 Do not treat repeated opinions based on the same evidence as independent evidence.
+
+For the four specialized visual and UAT modes, read [visual-role-routing.md](visual-role-routing.md). It maps existing roles only and does not add to the 81-role contract.

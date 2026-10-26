@@ -1,0 +1,12 @@
+{
+  "baseline": "ofe-visual-fixture-v1",
+  "cases": [
+    {"id": "normal", "expectation": "no invented defect; save survives reload"},
+    {"id": "overflow", "expectation": "horizontal overflow is detected as LAYOUT"},
+    {"id": "broken-action", "expectation": "DOM-only success without request or persistence is BUSINESS_FLOW"},
+    {"id": "design-reference", "expectation": "computed reference differences produce a bounded implementation plan"},
+    {"id": "shared-regression", "expectation": "unexpected shared component movement produces a nonzero diff"},
+    {"id": "unreachable", "expectation": "navigation failure is UNVERIFIED"},
+    {"id": "asset-version", "expectation": "different asset URLs with identical pixels are not a design defect"}
+  ]
+}
